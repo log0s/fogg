@@ -4,14 +4,15 @@ import { useLens } from '../../hooks';
 
 import SearchPanelFilters from '../SearchPanelFilters';
 
-const LensSearchPanelFilters = (props) => {
-  const { geoSearch = {}, geoFilters = {} } = useLens();
-  const { updateSearch } = geoSearch;
+const LensSearchPanelFilters = ({ hideGeometryFilter = false, additionalFilterItems = [], ...props}) => {
+  const { map = {}, geoSearch = {}, geoFilters = {} } = useLens();
+  const { queryParams: { date, geoJson } = {}, updateSearch } = geoSearch;
   const {
     filters = {},
     openFilters,
     cancelFilterChanges,
-    saveFilterChanges
+    saveFilterChanges,
+    removeSingleFilter
   } = geoFilters;
 
   function handleSaveFilters () {
@@ -23,12 +24,51 @@ const LensSearchPanelFilters = (props) => {
     });
   }
 
+  function handleRemoveFilter (filterId) {
+    const { active } = removeSingleFilter(filterId);
+    updateSearch({
+      filters: active
+    });
+  }
+
+  additionalFilterItems = additionalFilterItems.map(({ onClickParams, ...rest }) => ({
+    ...rest,
+    onClick: onClickParams && (() => {
+      map.clearLayers();
+      updateSearch(onClickParams);
+    })
+  }));
+
+  if (!hideGeometryFilter && geoJson && geoJson.features && geoJson.features[0]) {
+    additionalFilterItems.push({
+      label: 'Geometry',
+      value: geoJson.features[0].geometry.type === 'Point' ? 'POINT' : 'POLYGON',
+      onClick: () => {
+        map.clearLayers();
+        updateSearch({ geoJson: {} });
+      }
+    })
+  }
+
+  if (date && (date.start || date.end)) {
+    additionalFilterItems.push({
+      label: 'Datetime',
+      value: `${(date.start && new Date(date.start).toISOString()) || 'Any'} to ${(date.end && new Date(date.end).toISOString()) || 'Any'}`,
+      onClick: () => {
+        map.clearLayers();
+        updateSearch({ date: {} });
+      }
+    })
+  }
+
   return (
     <SearchPanelFilters
       filters={filters}
       onOpenFilters={openFilters}
       onCancelFilterChanges={cancelFilterChanges}
       onSaveFiltersChanges={handleSaveFilters}
+      handleRemoveClick={handleRemoveFilter}
+      additionalFilterItems={additionalFilterItems}
       {...props}
     />
   );

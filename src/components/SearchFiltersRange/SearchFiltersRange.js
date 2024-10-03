@@ -36,6 +36,15 @@ const SearchFiltersRange = ({
     }
   }, [valueMinLocal, valueMaxLocal, rangeValue]);
 
+  useEffect(() => {
+    const { min, max } = value;
+    if ((min && (rangeValue.min !== min)) || (max && (rangeValue.max !== max))) {
+      setValueMinLocal(min);
+      setValueMaxLocal(max);
+      setRangeValue({ min, max });
+    }
+  }, [value])
+
   /**
    * handleInputChange
    * @description When the text inputs change, fire away

@@ -33,6 +33,8 @@ const Lens = ({
   searchType,
   placeholder = 'Search',
   availableFilters,
+  hideGeometryFilter,
+  additionalFilterItems,
   showFilters = true,
   availableLayers = null,
   hideNativeLayers = true,
@@ -182,7 +184,7 @@ const Lens = ({
                 </div>
               )}
               {displayFiltersPanel && (
-                <LensSearchPanelFilters hasFilterCancel={hasFilterCancel} />
+                <LensSearchPanelFilters hasFilterCancel={hasFilterCancel} hideGeometryFilter={hideGeometryFilter} additionalFilterItems={additionalFilterItems} />
               )}
               {SidebarComponents && (
                 <LensSidebarComponents SidebarComponents={SidebarComponents} />
