@@ -33,60 +33,60 @@
 }
 
 #rangeValue {
-    position: absolute;
-    top: -40%;
+  position: absolute;
+  top: -40%;
+
+  .number-input {
+    border: 1px solid $color-gray1;
+    display: inline-flex;
+  
+    > .minus,
+    > .plus {
+      outline: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      height: auto;
+      padding: 4px 5px 0 5px;
+      cursor: pointer;
+      margin: 0;
+      position: relative;
+    }
+  
+    > input[type="number"] {
+      font-family: sans-serif;
+      max-width: 4rem;
+      padding: 0.3rem 0.2rem 0.1rem 0.2rem;
+      border: solid $color-gray1;
+      border-width: 0 1px;
+      font-size: 0.8rem;
+      height: auto;
+      font-weight: 200;
+      text-align: center;
+      outline: 0;
+    }
+  }
+
+  &.error {
+    top: -30%;
+    border: 1px $color-red solid;
 
     .number-input {
-        border: 1px solid $color-gray1;
-        display: inline-flex;
-      
-        > .minus, 
-        > .plus {
-          outline: none;
-          -webkit-appearance: none;
-          background-color: transparent;
-          border: none;
-          align-items: center;
-          justify-content: center;
-          width: auto;
-          height: auto;
-          padding: 4px 5px 0 5px;
-          cursor: pointer;
-          margin: 0;
-          position: relative;
-        }
-      
-        > input[type="number"] {
-          font-family: sans-serif;
-          max-width: 4rem;
-          padding: 0.3rem 0.2rem 0.1rem 0.2rem;
-          border: solid $color-gray1;
-          border-width: 0 1px;
-          font-size: 0.8rem;
-          height: auto;
-          font-weight: 200;
-          text-align: center;
-          outline: 0;
-        }
+      border: none;
+
+      > .minus,
+      > .plus {
+        color: $color-red;
+      }
+      > input[type="number"] {
+        color: $color-red;
+        padding: 0.1rem 0.2rem 0.1rem 0.2rem;
+      }
     }
-
-    &.error {
-        top: -30%;
-        border: 1px $color-red solid;
-
-        .number-input {
-            border: none;
-
-            > .minus, 
-            > .plus {
-                color: $color-red;
-            }
-            > input[type="number"] {
-                color: $color-red;
-                padding: 0.1rem 0.2rem 0.1rem 0.2rem;
-            }
-        }
-    }
+  }
 }
 
 .rangeInput {
@@ -128,7 +128,7 @@
 }
 
 span.error {
-    flex: 1 0 50%;
-    color: $color-red;
-    font-size: .6rem;
+  flex: 1 0 50%;
+  color: $color-red;
+  font-size: .6rem;
 }

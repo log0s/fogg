@@ -43,7 +43,6 @@ export default function useLens () {
 
   async function handleSearch (settings = {}, options) {
     if (typeof search !== 'function') return {};
-
     const response = await search(
       {
         filters: [...filters.active],
@@ -173,10 +172,12 @@ export default function useLens () {
 
   /**
    * handleClearFilters
+   *
+   * @param {object} [options={}] provide optional config options for useGeoFilters.clearActiveFilters
    */
 
-  async function handleClearActiveFilters () {
-    const { active } = clearActiveFilters();
+  async function handleClearActiveFilters (options = {}) {
+    const { active } = clearActiveFilters(options);
     const response = await handleUpdateSearch({
       filters: active
     });

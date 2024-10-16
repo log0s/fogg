@@ -37,7 +37,7 @@ const searchFilters = [
   {
     label: 'Product Category',
     id: 'product_category',
-    name: 'properties/capella:product_category',
+    name: 'properties/sar:product_category',
     type: 'radiolist',
     list: ['standard', 'extended', 'custom']
   },

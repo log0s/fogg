@@ -15,7 +15,6 @@ describe('Button', () => {
   describe('Class name', () => {
     const buttonClass = 'test-class';
     const button = shallow(<Button className={buttonClass} />);
-
     it('should render the correct class name', () => {
       expect(button.find('span').hasClass(buttonClass)).toEqual(true);
     });

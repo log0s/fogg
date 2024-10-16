@@ -8,7 +8,7 @@ import { sortByKey } from '../../lib/util';
 import Button from '../Button';
 import Panel from '../Panel';
 import PanelActions from '../PanelActions';
-import { ALL_VALUES_ITEM } from '../SearchFiltersList/SearchFiltersList';
+import { ALL_VALUES_ITEM } from '../../data/search-filters';
 
 const SearchPanelFilters = ({
   filters = {},
@@ -168,7 +168,7 @@ const SearchPanelFilters = ({
                 <div className="table-cell" style={{ width: 'auto' }}>
                   <Button
                     className="search-panel-filters-list-item-remove"
-                    onClick={() =>  {
+                    onClick={() => {
                       if (filter.onClick) {
                         filter.onClick();
                       } else {
@@ -194,7 +194,9 @@ SearchPanelFilters.propTypes = {
   onOpenFilters: PropTypes.func,
   onSaveFiltersChanges: PropTypes.func,
   onCancelFilterChanges: PropTypes.func,
-  hasFilterCancel: PropTypes.bool
+  hasFilterCancel: PropTypes.bool,
+  additionalFilterItems: PropTypes.list,
+  handleRemoveClick: PropTypes.func
 };
 
 export default SearchPanelFilters;

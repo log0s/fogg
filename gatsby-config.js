@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Space Jam Gatsby Theme',
-    description: 'Gatsby theme for E84 Space Jam project',
+    title: 'Fogg Component Library',
+    name: 'fogg',
+    description: 'Leaflet + Gatsby Component Library',
     author: 'Element 84'
   },
   pathPrefix: '/fogg',

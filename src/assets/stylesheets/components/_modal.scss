@@ -26,13 +26,12 @@
     }
   }
 
-  .ReactModal__Content, {
+  .ReactModal__Content {
     overflow: hidden !important;
     max-width: breakpointByKey(medium, max);
     border-radius: $border-radius-medium !important;
     padding: 0 !important;
     margin: 0 auto;
-
     //   @include mobile() {
     //     top: 1em !important;
     //     right: 1em !important;

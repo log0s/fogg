@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
 
@@ -28,10 +27,10 @@ const SearchBox = ({
   const { value: query, updateValue: setQuery } = useStoredValue(searchInput);
   const [dateIsOpen, setDateIsOpen] = useState(false);
   const [option, setOptions] = useState(searchDropOptions);
-  
+
   let activeOptionVal;
   if (Array.isArray(option) && option.length !== 0) {
-    let activeOption = option.findIndex((obj => obj.isChecked == true));
+    const activeOption = option.findIndex(obj => obj.isChecked === true);
     activeOptionVal = option[activeOption].value;
   }
 
@@ -109,8 +108,8 @@ const SearchBox = ({
     activeOptionVal = e.target.value;
 
     // Reset and re-assign the active one.
-    searchDropOptions.forEach((item) => item.isChecked = 'false');
-    let objIndex = searchDropOptions.findIndex((obj => obj.id == e.target.id));
+    searchDropOptions.forEach((item) => item.isChecked === 'false');
+    const objIndex = searchDropOptions.findIndex(obj => obj.id === e.target.id);
     searchDropOptions[objIndex].isChecked = e.target.checked;
 
     setOptions(option => [...option, searchDropOptions]);
@@ -121,7 +120,7 @@ const SearchBox = ({
     <div className="search-box">
       <Form onSubmit={handleFormSubmit} autoComplete="off">
         {searchDropOption && (
-          <SearchDropOptions 
+          <SearchDropOptions
             options={searchDropOptions}
             onOptionClick={handleOptionClick}
           />
