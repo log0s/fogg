@@ -255,6 +255,8 @@ Lens.propTypes = {
   placeholder: PropTypes.string,
   showFilters: PropTypes.bool,
   availableFilters: PropTypes.array,
+  hideGeometryFilter: PropTypes.bool,
+  additionalFilterItems: PropTypes.array,
   hideNativeLayers: PropTypes.bool,
   fetchLayerData: PropTypes.oneOfType([
     PropTypes.func,

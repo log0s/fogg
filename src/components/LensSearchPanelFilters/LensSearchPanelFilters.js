@@ -4,7 +4,7 @@ import { useLens } from '../../hooks';
 
 import SearchPanelFilters from '../SearchPanelFilters';
 
-const LensSearchPanelFilters = ({ hideGeometryFilter = false, additionalFilterItems = [], ...props}) => {
+const LensSearchPanelFilters = ({ hideGeometryFilter = false, additionalFilterItems = [], ...props }) => {
   const { map = {}, geoSearch = {}, geoFilters = {} } = useLens();
   const { queryParams: { date, geoJson } = {}, updateSearch } = geoSearch;
   const {
@@ -47,7 +47,7 @@ const LensSearchPanelFilters = ({ hideGeometryFilter = false, additionalFilterIt
         map.clearLayers();
         updateSearch({ geoJson: {} });
       }
-    })
+    });
   }
 
   if (date && (date.start || date.end)) {
@@ -58,7 +58,7 @@ const LensSearchPanelFilters = ({ hideGeometryFilter = false, additionalFilterIt
         map.clearLayers();
         updateSearch({ date: {} });
       }
-    })
+    });
   }
 
   return (

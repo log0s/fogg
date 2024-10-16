@@ -195,7 +195,7 @@ SearchPanelFilters.propTypes = {
   onSaveFiltersChanges: PropTypes.func,
   onCancelFilterChanges: PropTypes.func,
   hasFilterCancel: PropTypes.bool,
-  additionalFilterItems: PropTypes.list,
+  additionalFilterItems: PropTypes.array,
   handleRemoveClick: PropTypes.func
 };
 

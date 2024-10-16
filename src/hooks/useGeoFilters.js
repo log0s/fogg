@@ -122,7 +122,7 @@ export default function useGeoFilters (filterSettings) {
    * @description Disables a single activated filter
    */
 
-  function removeSingleFilter(filterId) {
+  function removeSingleFilter (filterId) {
     const updatedFilterState = {
       ...filters,
       active: filters.active.filter(({ id } = {}) => id !== filterId),
